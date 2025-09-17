@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Welcome (Embeddable)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>body{font:16px/1.5 system-ui;margin:24px} .card{border:1px solid #ccc;padding:16px;border-radius:12px}</style>
+  <script>
+    // report height to parent so the iframe can auto-resize
+    function report() {
+      parent.postMessage({ type: 'EMBED_HEIGHT', height: document.documentElement.scrollHeight }, '*');
+    }
+    addEventListener('load', report);
+    new ResizeObserver(report).observe(document.documentElement);
+  </script>
+</head>
+<body>
+  <h1>Welcome 🎉</h1>
+  <div class="card">
+    <p>This page is designed to be embedded in an <code>&lt;iframe&gt;</code>.</p>
+  </div>
+</body>
+</html>
